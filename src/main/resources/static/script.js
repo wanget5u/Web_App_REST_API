@@ -45,8 +45,8 @@ async function loadItems(sortBy)
             <h3>${item.name}</h3>
             <p>${item.price.toFixed(2)} zł</p>
             <div>
-                <button class="button" onclick='editItem(${JSON.stringify(item)})'>Edytuj</button>
-                <button class="button" onclick='deleteItem(${item.id})'>Usuń</button>
+                <button class="cardButton" onclick='editItem(${JSON.stringify(item)})'>Edytuj</button>
+                <button class="cardButton" onclick='deleteItem(${item.id})'>Usuń</button>
             </div>`;
         itemGrid.appendChild(card);
     })

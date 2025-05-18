@@ -20,7 +20,7 @@ public class ItemService
         if ("price".equalsIgnoreCase(sortBy))
         {return itemRepository.findAllByOrderByPriceAsc();}
         else
-        {return itemRepository.findAllByOrderByIdAsc();}
+        {return itemRepository.findAllByOrderByNameAsc();}
     }
 
     public Item updateItem(Long id, Item updatedItem)

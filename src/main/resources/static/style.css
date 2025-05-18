@@ -1,20 +1,14 @@
 body
 {
-    background:
-            linear-gradient(
-            hsla(0, 0%, 97%, 0.7), hsla(0, 0%, 69%, 0.9)) no-repeat fixed;
+    background: linear-gradient(hsla(0, 0%, 97%, 0.7), hsla(0, 0%, 69%, 0.9)) no-repeat fixed;
     font-family: "JetBrains Mono", monospace;
     overflow-x: hidden;
-
     width: auto;
 }
 #header
 {
     position: relative;
-    background:
-            linear-gradient(to right,
-            hsla(0, 0%, 100%, 0.7), hsla(278, 4%, 58%, 0.9));
-
+    background: linear-gradient(to right, hsla(0, 0%, 100%, 0.7), hsla(278, 4%, 58%, 0.9));
     box-shadow: 3px 3px #292929;
     width: auto;
     display: flex;
@@ -24,6 +18,12 @@ body
     padding: 20px;
     min-height: 120px;
 }
+.header-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .subtitle
 {
     color: #333333;
@@ -31,26 +31,16 @@ body
     text-align: center;
     font-size: 14px;
 }
-.header-container
+.cardButton
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.button
-{
-    background: ghostwhite;
+    background: #ededed;
     border: none;
     font-size: 1.1em;
     margin-top: 5px;
     margin-right: 2px;
     border-radius: 2px;
-    cursor: pointer;
 }
-.button:hover
-{background: hsl(0, 0%, 85%, 1);}
-.button:active
-{background: hsl(0, 0%, 75%, 1);}
+.button,
 .inputTextField
 {
     background: ghostwhite;
@@ -60,8 +50,20 @@ body
     margin-right: 2px;
     border-radius: 2px;
 }
+.button,
+.cardButton
+{cursor: pointer;}
+.button:hover,
+.cardButton:hover
+{background: hsl(0, 0%, 85%);}
+.button:active,
+.cardButton:active
+{background: hsl(0, 0%, 75%);}
+.cardButton
+{box-shadow: 2px 2px #555555;}
 #middle
 {
+    margin-top: 30px;
     font-size: 18px;
     display: flex;
     justify-content: center;
@@ -71,16 +73,14 @@ body
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     gap: 10px;
     font-size: 0.9em;
-    background: linear-gradient(to right, hsla(0, 0%, 100%, 0.7), hsla(278, 4%, 58%, 0.9));
+    background: linear-gradient(to right, hsla(0, 0%, 78%, 0.7), hsla(278, 4%, 58%, 0.9));
     box-shadow: 3px 3px #292929;
     margin-top: 10px;
     padding: 10px;
     width: auto;
     bottom: 5px;
-
     font-family: "JetBrains Mono", monospace;
 }
 #itemGrid
@@ -89,7 +89,7 @@ body
     grid-gap: 15px;
     max-width: 900px;
     width: 100%;
-
+    grid-template-columns: repeat(3, 1fr);
     font-family: "JetBrains Mono", monospace;
 }
 .item-card
@@ -97,13 +97,15 @@ body
     padding: 10px;
     border-radius: 8px;
     box-shadow: 2px 2px 5px #888;
-    font-size: 16px;
-
+    background: linear-gradient(hsla(0, 0%, 85%, 0.91), hsla(278, 4%, 58%, 0.9)) bottom no-repeat fixed;
+    text-shadow: 2px 0 #acacac;
+    font-size: 1.2em;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     width: auto;
-
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     word-break: keep-all;
     white-space: nowrap;
 }
