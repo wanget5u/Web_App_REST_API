@@ -17,6 +17,6 @@ public class Item
     private String name;
 
     @Setter
-    @Column
+    @Column(name = "PRICE", nullable = false)
     private Double price;
 }

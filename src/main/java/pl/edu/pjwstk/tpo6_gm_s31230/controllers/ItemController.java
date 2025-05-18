@@ -2,7 +2,7 @@ package pl.edu.pjwstk.tpo6_gm_s31230.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pjwstk.tpo6_gm_s31230.entities.Item;
-import pl.edu.pjwstk.tpo6_gm_s31230.repositories.ItemRepository;
+import pl.edu.pjwstk.tpo6_gm_s31230.services.ItemService;
 
 import java.util.List;
 
@@ -10,39 +10,24 @@ import java.util.List;
 @RequestMapping("/data")
 public class ItemController
 {
-    private final ItemRepository itemRepository;
+    private final ItemService itemService;
 
-    public ItemController(ItemRepository itemRepository)
-    {this.itemRepository = itemRepository;}
+    public ItemController(ItemService itemService)
+    {this.itemService = itemService;}
 
     @GetMapping
-    public List<Item> getItems(@RequestParam(required = false) String sortBy)
-    {
-        if ("price".equalsIgnoreCase(sortBy))
-        {return itemRepository.findAllByOrderByPriceAsc();}
-        else
-        {return itemRepository.findAllByOrderByIdAsc();}
-    }
-
+    public List<Item> getItemsSortedBy(@RequestParam(required = false) String sortBy)
+    {return itemService.getItems(sortBy);}
 
     @PostMapping
     public Item addItem(@RequestBody Item item)
-    {return itemRepository.save(item);}
+    {return itemService.addItem(item);}
 
     @PutMapping("/{id}")
     public Item updateItem(@PathVariable Long id, @RequestBody Item updatedItem)
-    {
-        return itemRepository
-                .findById(id)
-                .map((item ->
-                {
-                    item.setName(updatedItem.getName());
-                    item.setPrice(updatedItem.getPrice());
-                    return itemRepository.save(item);
-                })).orElse(updatedItem);
-    }
+    {return itemService.updateItem(id, updatedItem);}
 
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable Long id)
-    {itemRepository.deleteById(id);}
+    {itemService.deleteItemById(id);}
 }
