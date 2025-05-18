@@ -1,6 +1,8 @@
 package pl.edu.pjwstk.tpo6_gm_s31230.controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import pl.edu.pjwstk.tpo6_gm_s31230.entities.Item;
 import pl.edu.pjwstk.tpo6_gm_s31230.services.ItemService;
 
@@ -20,14 +22,18 @@ public class ItemController
     {return itemService.getItems(sortBy);}
 
     @PostMapping
-    public Item addItem(@RequestBody Item item)
-    {return itemService.addItem(item);}
+    public Item addItem(@ModelAttribute Item item, @RequestPart(required = false) MultipartFile imageFile)
+    {return itemService.addItem(item, imageFile);}
 
     @PutMapping("/{id}")
-    public Item updateItem(@PathVariable Long id, @RequestBody Item updatedItem)
-    {return itemService.updateItem(id, updatedItem);}
+    public Item updateItem(@PathVariable Long id, @ModelAttribute Item updatedItem, @RequestPart(required = false) MultipartFile imageFile)
+    {return itemService.updateItem(id, updatedItem, imageFile);}
 
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable Long id)
     {itemService.deleteItemById(id);}
+
+    @GetMapping("/{id}/image")
+    public ResponseEntity<byte[]> getItemImage(@PathVariable Long id)
+    {return itemService.getImageData(id);}
 }

@@ -9,18 +9,19 @@ itemForm.onsubmit = async (element) =>
         element.preventDefault();
         const formData = new FormData(itemForm);
         const id = formData.get("id");
-        const name = formData.get("name");
-        const price = parseFloat(formData.get("price"));
 
-        const item = {name, price};
+        const imageFile = document.getElementById('imageInput').files[0];
+
+        if (imageFile)
+        {formData.append("imageFile", imageFile)}
+
         const method = id ? 'PUT' : 'POST';
         const url = id ? `/data/${id}` : '/data';
 
         await fetch(url,
             {
                 method,
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(item)
+                body: formData
             });
 
         itemForm.reset();
@@ -42,6 +43,7 @@ async function loadItems(sortBy)
         const card = document.createElement("div");
         card.classList.add("item-card")
         card.innerHTML = `
+            <img src="/data/${item.id}/image" alt="" style="max-width:100%; height:auto;" />
             <h3>${item.name}</h3>
             <p>${item.price.toFixed(2)} zł</p>
             <div>
