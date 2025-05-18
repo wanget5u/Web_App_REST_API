@@ -4,6 +4,9 @@ body
             linear-gradient(
             hsla(0, 0%, 97%, 0.7), hsla(0, 0%, 69%, 0.9)) no-repeat fixed;
     font-family: "JetBrains Mono", monospace;
+    overflow-x: hidden;
+
+    width: auto;
 }
 #header
 {
@@ -13,7 +16,7 @@ body
             hsla(0, 0%, 100%, 0.7), hsla(278, 4%, 58%, 0.9));
 
     box-shadow: 3px 3px #292929;
-    width: 100%;
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,83 +37,66 @@ body
     flex-direction: column;
     align-items: center;
 }
-.button-container
-{
-    position: absolute;
-    bottom: 10px;
-    right: 45px;
-}
 .button
 {
     background: ghostwhite;
-
-    font-family: "JetBrains Mono", monospace;
-
     border: none;
     font-size: 1.1em;
     margin-top: 5px;
     margin-right: 2px;
-
     border-radius: 2px;
-
     cursor: pointer;
 }
 .button:hover
-{
-    background: hsl(0, 0%, 85%, 1);
-}
+{background: hsl(0, 0%, 85%, 1);}
 .button:active
-{
-    background: hsl(0, 0%, 75%, 1);
-}
+{background: hsl(0, 0%, 75%, 1);}
 .inputTextField
 {
     background: ghostwhite;
-
-    font-family: "JetBrains Mono", monospace;
-
     border: none;
     font-size: 1.1em;
     margin-top: 5px;
     margin-right: 2px;
-
     border-radius: 2px;
 }
 #middle
 {
     font-size: 18px;
+    display: flex;
+    justify-content: center;
 }
 #middleToolbar
 {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
+    align-items: flex-start;
+    flex-direction: row;
 
+    gap: 10px;
     font-size: 0.9em;
-
-    background:
-            linear-gradient(to right,
-            hsla(0, 0%, 100%, 0.7), hsla(278, 4%, 58%, 0.9));
-
+    background: linear-gradient(to right, hsla(0, 0%, 100%, 0.7), hsla(278, 4%, 58%, 0.9));
     box-shadow: 3px 3px #292929;
-
     margin-top: 10px;
-    padding: 5px;
-    width: auto;
-
-    position: sticky;
+    padding: 10px;
+    width: 100%;
     bottom: 5px;
 }
-#itemForm
+#itemGrid
 {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    display: grid;
+    grid-gap: 15px;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
 }
-#filterForm
+.item-card
 {
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #888;
+    font-size: 16px;
+
     display: flex;
-    align-items: center;
-    gap: 5px;
+    justify-content: space-between;
+    word-break: break-word;
 }

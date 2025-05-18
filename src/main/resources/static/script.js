@@ -1,6 +1,8 @@
 const itemForm = document.getElementById('itemForm');
 const filterForm = document.getElementById('filterForm');
-const itemTableBody = document.getElementById('itemTableBody');
+const itemGrid = document.getElementById('itemGrid');
+const cancelEditButton = document.getElementById('cancelEditButton');
+const submitButton = document.getElementById('submitButton');
 
 itemForm.onsubmit = async (element) =>
     {
@@ -22,6 +24,9 @@ itemForm.onsubmit = async (element) =>
             });
 
         itemForm.reset();
+        itemForm.id.value = '';
+        cancelEditButton.style.display = 'none';
+        submitButton.textContent = 'Dodaj przedmiot';
         await loadItems(filterForm.sortBy.value);
     };
 
@@ -30,19 +35,20 @@ async function loadItems(sortBy)
     const response = await fetch(`/data?sortBy=${sortBy}`);
     const items = await response.json();
 
-    itemTableBody.innerHTML = '';
+    itemGrid.innerHTML = '';
 
     items.forEach((item) =>
     {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${item.name}</td>
-            <td>${item.price.toFixed(2)}</td>
-            <td>
+        const card = document.createElement("div");
+        card.classList.add("item-card")
+        card.innerHTML = `
+            <h3>${item.name}</h3>
+            <p>${item.price.toFixed(2)} zł</p>
+            <div>
                 <button class="button" onclick='editItem(${JSON.stringify(item)})'>Edytuj</button>
                 <button class="button" onclick='deleteItem(${item.id})'>Usuń</button>
-            </td>`;
-        itemTableBody.appendChild(row);
+            </div>`;
+        itemGrid.appendChild(card);
     })
 }
 
@@ -51,6 +57,9 @@ async function editItem(item)
     itemForm.id.value = item.id;
     itemForm.name.value = item.name;
     itemForm.price.value = item.price;
+
+    cancelEditButton.style.display = 'inline-block';
+    submitButton.textContent = 'Zaktualizuj przedmiot';
 }
 
 async function deleteItem(id)
@@ -61,3 +70,11 @@ async function deleteItem(id)
 
 window.addEventListener('DOMContentLoaded', () =>
 {loadItems(filterForm.sortBy.value || 'name');});
+
+cancelEditButton.onclick = () =>
+{
+    itemForm.reset();
+    itemForm.id.value = '';
+    cancelEditButton.style.display = 'none';
+    submitButton.textContent = 'Dodaj przedmiot';
+};

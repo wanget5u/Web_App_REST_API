@@ -1,21 +1,19 @@
 package pl.edu.pjwstk.tpo6_gm_s31230.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pjwstk.tpo6_gm_s31230.entities.Item;
 import pl.edu.pjwstk.tpo6_gm_s31230.repositories.ItemRepository;
 
 import java.util.List;
 
-import static java.lang.System.out;
-
 @RestController
 @RequestMapping("/data")
 public class ItemController
 {
-    @Autowired
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
+
+    public ItemController(ItemRepository itemRepository)
+    {this.itemRepository = itemRepository;}
 
     @GetMapping
     public List<Item> getItems(@RequestParam(required = false) String sortBy)

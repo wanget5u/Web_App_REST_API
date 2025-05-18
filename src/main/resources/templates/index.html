@@ -14,35 +14,32 @@
 </div>
 
 <div id="middleToolbar">
-    <form id="itemForm">
-        <input type="hidden" class="button" name="id"/>
-        <label><input type="text" name="name" class="inputTextField" placeholder="Nazwa przedmiotu" required /></label>
-        <label><input type="number" name="price" class="inputTextField" placeholder="Cena" required /></label>
-        <button type="submit" class="button">Dodaj przedmiot</button>
-    </form>
+    <div id="formLeft">
+        <form id="itemForm">
+            <input type="hidden" class="button" name="id"/>
+            <label><input type="text" name="name" class="inputTextField" placeholder="Nazwa przedmiotu" required /></label>
+            <label><input type="number" name="price" class="inputTextField" placeholder="Cena" required /></label>
+            <button type="submit" id="submitButton" class="button">Dodaj przedmiot</button>
+            <button type="button" id="cancelEditButton" class="button" style="display: none;">Anuluj edycję</button>
+        </form>
+    </div>
 
-    <form id="filterForm">
-        Sortuj:
-        <label>
-            <select name="sortBy" class="button" onchange="loadItems(this.value)">
-                <option value="name">Według nazwy</option>
-                <option value="price">Według ceny</option>
-            </select>
-        </label>
-    </form>
+    <div id="formRight">
+        <form id="filterForm">
+            Sortuj:
+            <label>
+                <select name="sortBy" class="button" onchange="loadItems(this.value)">
+                    <option value="name">Według nazwy</option>
+                    <option value="price">Według ceny</option>
+                </select>
+            </label>
+        </form>
+    </div>
 </div>
 
 <div id="middle">
-    <table id="itemTable">
-        <thead>
-            <tr>
-                <th>Nazwa</th>
-                <th>Cena</th>
-                <th>Akcje</th>
-            </tr>
-        </thead>
-        <tbody id="itemTableBody"></tbody>
-    </table>
+    <div id="itemGrid" style="display:grid; grid-template-columns: repeat(3,1fr);">
+    </div>
 </div>
 
 <script src="/script.js"></script>
