@@ -1,0 +1,116 @@
+body
+{
+    background:
+            linear-gradient(
+            hsla(0, 0%, 97%, 0.7), hsla(0, 0%, 69%, 0.9)) no-repeat fixed;
+    font-family: "JetBrains Mono", monospace;
+}
+#header
+{
+    position: relative;
+    background:
+            linear-gradient(to right,
+            hsla(0, 0%, 100%, 0.7), hsla(278, 4%, 58%, 0.9));
+
+    box-shadow: 3px 3px #292929;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    padding: 20px;
+    min-height: 120px;
+}
+.subtitle
+{
+    color: #333333;
+    margin: 0 0 4px 0;
+    text-align: center;
+    font-size: 14px;
+}
+.header-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button-container
+{
+    position: absolute;
+    bottom: 10px;
+    right: 45px;
+}
+.button
+{
+    background: ghostwhite;
+
+    font-family: "JetBrains Mono", monospace;
+
+    border: none;
+    font-size: 1.1em;
+    margin-top: 5px;
+    margin-right: 2px;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+}
+.button:hover
+{
+    background: hsl(0, 0%, 85%, 1);
+}
+.button:active
+{
+    background: hsl(0, 0%, 75%, 1);
+}
+.inputTextField
+{
+    background: ghostwhite;
+
+    font-family: "JetBrains Mono", monospace;
+
+    border: none;
+    font-size: 1.1em;
+    margin-top: 5px;
+    margin-right: 2px;
+
+    border-radius: 2px;
+}
+#middle
+{
+    font-size: 18px;
+}
+#middleToolbar
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 0.9em;
+
+    background:
+            linear-gradient(to right,
+            hsla(0, 0%, 100%, 0.7), hsla(278, 4%, 58%, 0.9));
+
+    box-shadow: 3px 3px #292929;
+
+    margin-top: 10px;
+    padding: 5px;
+    width: auto;
+
+    position: sticky;
+    bottom: 5px;
+}
+#itemForm
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#filterForm
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

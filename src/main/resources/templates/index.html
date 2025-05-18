@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>TPO6_S31230</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<div id="header">
+    <div class="header-container">
+        <h1>TPO6_S31230</h1>
+        <p class="subtitle">prowizoryczny sklep wszelakich artykułów</p>
+    </div>
+</div>
+
+<div id="middleToolbar">
+    <form id="itemForm">
+        <input type="hidden" class="button" name="id"/>
+        <label><input type="text" name="name" class="inputTextField" placeholder="Nazwa przedmiotu" required /></label>
+        <label><input type="number" name="price" class="inputTextField" placeholder="Cena" required /></label>
+        <button type="submit" class="button">Dodaj przedmiot</button>
+    </form>
+
+    <form id="filterForm">
+        Sortuj:
+        <label>
+            <select name="sortBy" class="button" onchange="loadItems(this.value)">
+                <option value="name">Według nazwy</option>
+                <option value="price">Według ceny</option>
+            </select>
+        </label>
+    </form>
+</div>
+
+<div id="middle">
+    <table id="itemTable">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Cena</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody id="itemTableBody"></tbody>
+    </table>
+</div>
+
+<script src="/script.js"></script>
+</body>
+</html>
