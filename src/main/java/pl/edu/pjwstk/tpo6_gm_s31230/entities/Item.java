@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Setter
 @Getter
 @Entity
 @NoArgsConstructor
@@ -14,16 +15,13 @@ public class Item
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Setter
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Setter
     @Column(name = "PRICE", nullable = false)
     private Double price;
 
     @Lob
-    @Setter
     @Column(name = "IMAGE_DATA")
     private byte[] image;
 }

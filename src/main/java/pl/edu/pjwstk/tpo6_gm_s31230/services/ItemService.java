@@ -72,6 +72,9 @@ public class ItemService
         itemRepository.deleteById(id);
     }
 
+    public Item getItemById(Long id)
+    {return itemRepository.findById(id).orElseThrow(() -> new ItemNotFoundException(id));}
+
     public ResponseEntity<byte[]> getImageData(Long id)
     {
         Item item = itemRepository.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
@@ -82,7 +85,7 @@ public class ItemService
         {return ResponseEntity.notFound().build();}
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.IMAGE_JPEG);
+        httpHeaders.setContentType(MediaType.IMAGE_PNG);
         return new ResponseEntity<>(imageData, httpHeaders, HttpStatus.OK);
     }
 }

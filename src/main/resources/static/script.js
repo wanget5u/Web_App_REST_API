@@ -24,6 +24,8 @@ itemForm.onsubmit = async (element) =>
                 body: formData
             });
 
+        console.log(url, method, formData)
+
         itemForm.reset();
         itemForm.id.value = '';
         cancelEditButton.style.display = 'none';

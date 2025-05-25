@@ -33,6 +33,10 @@ public class ItemController
     public void deleteItem(@PathVariable Long id)
     {itemService.deleteItemById(id);}
 
+    @GetMapping("/{id}")
+    public Item getItemById(@PathVariable Long id)
+    {return itemService.getItemById(id);}
+
     @GetMapping("/{id}/image")
     public ResponseEntity<byte[]> getItemImage(@PathVariable Long id)
     {return itemService.getImageData(id);}
